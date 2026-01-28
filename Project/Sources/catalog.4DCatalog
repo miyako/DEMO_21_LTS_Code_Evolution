@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
+<base name="DEMO_21_LTS_Code_Evolution" uuid="8CB39247C6A74080B8267976FC2B0AE5" collation_locale="en">
+	<schema name="DEFAULT_SCHEMA"/>
+	<table name="Contacts" uuid="FCBA4ADA84C1429F9D2EFB7158CEE009" id="1">
+		<field name="ID" uuid="1DD990069F3841A790E8D9DBA29414AC" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="Name" uuid="B497E5C7248A4A0DBB3401098D3A420E" type="10" limiting_length="255" id="2"/>
+		<field name="Email" uuid="802E7F5B53174AF49223BB7453BE9760" type="10" limiting_length="255" id="3"/>
+		<field name="Phone" uuid="E69B70E2A270404B9FD3B08A8B021F31" type="10" limiting_length="255" id="4"/>
+		<field name="Type" uuid="99E3F3AED77A449AA2DAB665B060D9AB" type="10" limiting_length="255" id="5"/>
+		<field name="Company" uuid="57EDCF90FEDA412790520F5CB21916D8" type="10" limiting_length="255" id="6"/>
+		<field name="Position" uuid="CC98CBB9413043D49031A1CFA28FCC41" type="10" limiting_length="255" id="7"/>
+		<field name="Address" uuid="62573A3AC4454C919172DF94140684C7" type="10" limiting_length="255" id="8"/>
+		<field name="Notes" uuid="8A0AC81D9C064878A6069E9209AACE86" type="10" limiting_length="255" id="9"/>
+		<primary_key field_name="ID" field_uuid="1DD990069F3841A790E8D9DBA29414AC"/>
+	</table>
+	<index kind="regular" unique_keys="true" uuid="FB31FEAFAF1B4B3C9924735BC18DC50B" type="7">
+		<field_ref uuid="1DD990069F3841A790E8D9DBA29414AC" name="ID">
+			<table_ref uuid="FCBA4ADA84C1429F9D2EFB7158CEE009" name="Contacts"/>
+		</field_ref>
+	</index>
+	<base_extra>
+		<journal_file journal_file_enabled="true"/>
+	</base_extra>
+</base>

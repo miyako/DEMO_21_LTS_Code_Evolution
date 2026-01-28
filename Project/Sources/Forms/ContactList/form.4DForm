@@ -1,0 +1,246 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 600,
+	"windowMinHeight": 400,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "Liste des Contacts",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 800,
+					"height": 50,
+					"stroke": "transparent",
+					"sizingX": "grow",
+					"bottom": 50,
+					"strokeWidth": 1,
+					"class": "toolbarFill"
+				},
+				"ListBox": {
+					"type": "listbox",
+					"left": 20,
+					"top": 70,
+					"width": 760,
+					"height": 310,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange",
+						"onDoubleClick"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.contacts",
+					"currentItemSource": "Form.selectedContact",
+					"selectedItemsSource": "Form.selection",
+					"scrollbarHorizontal": "automatic",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"resizingMode": "rightToLeft",
+					"hideFocusRing": true,
+					"headerHeight": "2em",
+					"selectionMode": "single",
+					"columns": [
+						{
+							"header": {
+								"text": "Name",
+								"name": "Header1"
+							},
+							"name": "Column1",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "This:C1470.Name",
+							"width": 190,
+							"minWidth": 150,
+							"maxWidth": 300
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "Email"
+							},
+							"name": "Column2",
+							"footer": {
+								"name": "Footer2"
+							},
+							"dataSource": "This.Email",
+							"width": 190,
+							"minWidth": 150,
+							"maxWidth": 300
+						},
+						{
+							"header": {
+								"name": "Header3",
+								"text": "Phone"
+							},
+							"name": "Column3",
+							"footer": {
+								"name": "Footer3"
+							},
+							"dataSource": "This.Phone",
+							"width": 140,
+							"minWidth": 40,
+							"maxWidth": 300
+						},
+						{
+							"header": {
+								"name": "Header4",
+								"text": "Type"
+							},
+							"name": "Column4",
+							"footer": {
+								"name": "Footer4"
+							},
+							"dataSource": "This.Type",
+							"width": 80,
+							"minWidth": 50,
+							"maxWidth": 300
+						},
+						{
+							"header": {
+								"name": "Header5",
+								"text": "Company"
+							},
+							"name": "Column5",
+							"footer": {
+								"name": "Footer5"
+							},
+							"dataSource": "This.Company",
+							"width": 140,
+							"minWidth": 40,
+							"maxWidth": 300
+						}
+					]
+				},
+				"BtnNew": {
+					"type": "button",
+					"top": 10,
+					"left": 20,
+					"width": 30,
+					"height": 30,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/BtnNew.4dm",
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"icon": "/RESOURCES/images/Plus_24.png",
+					"textPlacement": "bottom",
+					"iconFrames": 4,
+					"imageHugsTitle": true,
+					"textAlign": "center"
+				},
+				"BtnEdit": {
+					"type": "button",
+					"top": 10,
+					"left": 60,
+					"width": 30,
+					"height": 30,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/BtnEdit.4dm",
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"icon": "/RESOURCES/images/Edit_24.png",
+					"textPlacement": "bottom",
+					"iconFrames": 4,
+					"imageHugsTitle": true,
+					"textAlign": "center"
+				},
+				"BtnRemove": {
+					"type": "button",
+					"top": 10,
+					"left": 100,
+					"width": 30,
+					"height": 30,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/BtnRemove.4dm",
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"icon": "/RESOURCES/images/Del_24.png",
+					"textPlacement": "bottom",
+					"iconFrames": 4,
+					"imageHugsTitle": true,
+					"textAlign": "center"
+				},
+				"SearchPicker": {
+					"type": "subform",
+					"top": 10,
+					"left": 575,
+					"width": 205,
+					"height": 30,
+					"dataSource": "Form:C1466.search",
+					"dataSourceTypeHint": "text",
+					"detailForm": "SearchPicker",
+					"deletableInList": false,
+					"doubleClickInRowAction": "editSubrecord",
+					"doubleClickInEmptyAreaAction": "addSubrecord",
+					"selectionMode": "multiple",
+					"printFrame": "variable",
+					"method": "ObjectMethods/SearchPicker.4dm",
+					"events": [
+						"onLoad",
+						"onDataChange"
+					],
+					"sizingX": "move"
+				},
+				"Line1": {
+					"type": "line",
+					"top": 50,
+					"left": 0,
+					"width": 800,
+					"height": 0,
+					"strokeWidth": 1,
+					"class": "toolbarStroke",
+					"sizingX": "grow"
+				}
+			}
+		}
+	],
+	"geometryStamp": 351,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"formClass": "ContactListForm"
+}

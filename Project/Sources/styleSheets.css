@@ -1,0 +1,22 @@
+.toolbarFill {
+    fill: white;
+    stroke: transparent;
+}
+
+.toolbarStroke {
+    fill: transparent;
+    stroke: #EBEBEB;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .toolbarFill {
+        fill: #1E1E1E;
+        stroke: transparent;
+    }
+
+    .toolbarStroke {
+        fill: transparent;
+        stroke: #3A3A3C;
+    }
+}

@@ -1,0 +1,17 @@
+{
+	"TypeContact": {
+		"editable": false,
+		"items": [
+			{
+				"text": "Person",
+				"ref": 0,
+				"editable": true
+			},
+			{
+				"text": "Company",
+				"ref": 0,
+				"editable": true
+			}
+		]
+	}
+}
