@@ -51,8 +51,6 @@ Class constructor($obj : cs:C1710.ContactsEntity)
 	
 Function save
 	
-	var $status : Object
-	
 	If (This:C1470.contact=Null:C1517)
 		// Creation
 		This:C1470.contact:=ds:C1482.Contacts.new()
@@ -67,7 +65,7 @@ Function save
 	This:C1470.contact.Address:=This:C1470.address
 	This:C1470.contact.Notes:=This:C1470.notes
 	
-	$status:=This:C1470.contact.saveContact()
+	var $status:=This:C1470.contact.saveContact()
 	
 	If ($status.success=False:C215)
 		ALERT:C41($status.statusText)
