@@ -2,11 +2,13 @@
 
 ## Slide
 
-Today I’m going to present my favorite new features in 4D 21. These are not features that the end user will directly see in the interface or on the screen.
-Taken individually, each improvement may seem small. But when you put them together, they very concretely change the way we develop:
-more productivity, code that is easier to read and maintain, and fewer mistakes while writing it.
-With 4D 21, many more checks are performed for us even before compiling or running the application — something that wasn’t possible in 4D 20.
-So we free up time that we can spend on what really matters: delivering useful features faster and providing more reliable applications to our users.
+Today, I’m going to present some new features in 4D 21 that very concretely change the way you develop: greater productivity, more natural and better organized code that is easier to read and maintain, and above all fewer errors from the moment you start writing.
+
+4D 21 now performs many more checks for you, even before you compile or run the application — something that wasn’t possible with 4D 20. Problems are detected much earlier, directly while you’re writing the code.
+
+And of course, less time spent fixing issues means more time to develop what truly adds value: delivering useful features faster and building more reliable applications for your users. 
+
+Let’s take a closer look at these features in detail.
 
 📍 Slide:
 * Form classes (https://blog.4d.com/empower-your-development-process-with-your-forms/)
