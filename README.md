@@ -8,6 +8,8 @@ Find more information on the [4D blog](https://blog.4d.com/):
 * [Dynamic Data Sources for Form objects](https://blog.4d.com/building-forms-on-the-fly-with-new-data-source-commands/)
 * Simplified declarations and assignments for [class property](https://blog.4d.com/class-property-declarations-and-assignments-on-a-single-line/) and [variable](https://blog.4d.com/simplify-variable-declarations-assignments-in-a-single-line/)
 
+Watch the 21 LTS Webinar: [4D Coding: Built in real-time guidance](https://www.youtube.com/watch?v=gWyOnuMmkJA&t=3689s)
+
 ## Installing and Using a 4D Project
 
 ### Pre-requisites
