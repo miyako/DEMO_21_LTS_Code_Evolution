@@ -1,38 +1,37 @@
-// Contact form properties
-property name : Text  // Contact's full name or company name
-property email : Text  // Email address for contact
-property phone : Text  // Phone number
-property type : Text  // Type of contact: "Person" or "Company"
-property company : Text  // Company name (for persons) or company designation
-property position : Text  // Job position (for persons in companies)
-property address : Text  // Full address (street, city, postal code)
-property notes : Text  // Additional notes or remarks about the contact
+// 連絡先 Form のプロパティ
+property name : Text  // 連絡先のフルネームまたは会社名
+property email : Text  // 連絡先のメールアドレス
+property phone : Text  // 電話番号
+property type : Text  // 連絡先の種類: "Person" または "Company"
+property company : Text  // 会社名 (個人の場合) または会社の名称
+property position : Text  // 役職 (会社内の個人の場合)
+property address : Text  // 完全な住所 (市区町村、番地、郵便番号など)
+property notes : Text  // 連絡先に関する追加のメモまたは備考
 
-// Database and state properties
-property contact : cs:C1710.ContactsEntity  // Reference to the database entity
-property isNew : Boolean  // True if creating new contact, False if editing existing
-
-// Dynamic form properties
-property isCompany : Boolean  // True if type is "Company"
-property isPerson : Boolean  // True if type is "Person"
-property attributes : Collection  // List of field names to display based on type
-property nbInputs : Integer  // Number of dynamically created input fields
+// データベースと状態のプロパティ
+property contact : cs:C1710.ContactsEntity  // データベースのエンティティへの参照
+property isNew : Boolean  // 新しい連絡先を作成中の場合は True、既存のものを編集中の場合は False
+// 動的 Form のプロパティ
+property isCompany : Boolean  // 種類が "Company" の場合は True
+property isPerson : Boolean  // 種類が "Person" の場合は True
+property attributes : Collection  // 種類に基づいて表示するフィールド名のリスト
+property nbInputs : Integer  // 動的に作成された入力フィールドの数
 
 Class constructor($obj : cs:C1710.ContactsEntity)
 	
 	If ($obj=Null:C1517)
-		// Creating a new contact
+		// 新しい連絡先を作成する
 		This:C1470.isNew:=True:C214
 		This:C1470.name:=""
 		This:C1470.email:=""
 		This:C1470.phone:=""
-		This:C1470.type:="Person"  // Default value
+		This:C1470.type:="Person"  // デフォルト値
 		This:C1470.company:=""
 		This:C1470.position:=""
 		This:C1470.address:=""
 		This:C1470.notes:=""
 	Else 
-		// Editing an existing contact
+		// 既存の連絡先を編集する
 		This:C1470.isNew:=False:C215
 		This:C1470.contact:=$obj
 		This:C1470.name:=This:C1470.contact.Name
@@ -52,7 +51,7 @@ Class constructor($obj : cs:C1710.ContactsEntity)
 Function save
 	
 	If (This:C1470.contact=Null:C1517)
-		// Creation
+		// 作成
 		This:C1470.contact:=ds:C1482.Contacts.new()
 	End if 
 	
@@ -76,63 +75,63 @@ Function save
 	
 Function updateType
 	
-	// Called when type changes (Person/Company)
-	// Updates boolean flags that determine which fields to display
+	// 種類が変更されたときに呼び出される (Person/Company)
+	// どのフィールドを表示するかを決定するブールフラグを更新する
 	This:C1470.isCompany:=(This:C1470.type="Company")
 	This:C1470.isPerson:=(This:C1470.type="Person")
 	
-	// Define attributes to display based on type
-	// These flags trigger the dynamic field generation in CreateDynamicFields
-	// which creates, positions, and binds input fields using OBJECT SET DATA SOURCE FORMULA
-	// Person: shows name, email, phone, address, notes
-	// Company: shows company, name, position, email, phone, address, notes
+	// 種類に基づいて表示する属性を定義する
+	// これらのフラグは CreateDynamicFields での動的フィールド生成をトリガーする
+	// ここでは OBJECT SET DATA SOURCE FORMULA を使用して入力フィールドを作成、配置、およびバインドする
+	// Person: 名前、メールアドレス、電話番号、住所、メモを表示する
+	// Company: 会社名、名前、役職、メールアドレス、電話番号、住所、メモを表示する
 	If (This:C1470.isCompany)
-		// For a company: Company, Name, Position, Email, Phone, Address, Notes
+		// 会社の場合: 会社名 (Company)、名前 (Name)、役職 (Position)、メールアドレス (Email)、電話番号 (Phone)、住所 (Address)、メモ (Notes)
 		This:C1470.attributes:=New collection:C1472("company"; "name"; "position"; "email"; "phone"; "address"; "notes")
 	Else 
-		// For a person: Name, Email, Phone, Address, Notes
+		// 個人の場合: 名前 (Name)、メールアドレス (Email)、電話番号 (Phone)、住所 (Address)、メモ (Notes)
 		This:C1470.attributes:=New collection:C1472("name"; "email"; "phone"; "address"; "notes")
 	End if 
 	
 	
 Function createDynamicFields
-	// Dynamically create form fields based on type (Person/Company)
+	// 種類 (Person/Company) に基づいて Form フィールドを動的に作成する
 	
 	var $l_x1; $l_y1; $l_x2; $l_y2; $i_x1; $i_y1; $i_x2; $i_y2 : Integer
 	var $item; $label : Text
 	var $formula : 4D:C1709.Function
 	var $index : Integer
 	
-	// Get initial coordinates of templates
+	// テンプレートの初期座標を取得する
 	OBJECT GET COORDINATES:C663(*; "Label"; $l_x1; $l_y1; $l_x2; $l_y2)
 	OBJECT GET COORDINATES:C663(*; "Input"; $i_x1; $i_y1; $i_x2; $i_y2)
 	
-	// Create fields dynamically
+	// フィールドを動的に作成する
 	$index:=0
 	For each ($item; Form:C1466.attributes)
 		$index+=1
 		
-		// Create label
+		// ラベルを作成する
 		OBJECT DUPLICATE:C1111(*; "Label"; "Label_"+String:C10($index))
 		OBJECT SET VISIBLE:C603(*; "Label_"+String:C10($index); True:C214)
 		OBJECT SET COORDINATES:C1248(*; "Label_"+String:C10($index); $l_x1; $l_y1; $l_x2; $l_y2)
 		
-		// Set label title
+		// ラベルのタイトルを設定する
 		$label:=$item
-		// Capitalize first letter for label
+		// ラベルの最初の文字を大文字にする
 		$label[[1]]:=Uppercase:C13($label[[1]])
 		OBJECT SET TITLE:C194(*; "Label_"+String:C10($index); $label+" :")
 		
-		// Create input
+		// 入力フィールドを作成する
 		OBJECT DUPLICATE:C1111(*; "Input"; "Input_"+String:C10($index))
 		OBJECT SET VISIBLE:C603(*; "Input_"+String:C10($index); True:C214)
 		OBJECT SET COORDINATES:C1248(*; "Input_"+String:C10($index); $i_x1; $i_y1; $i_x2; $i_y2)
 		
-		// Set data source formula
+		// データソースの数式を設定する
 		$formula:=Formula from string:C1601("Form."+$item)
 		OBJECT SET DATA SOURCE FORMULA:C1851(*; "Input_"+String:C10($index); $formula)
 		
-		// Calculate new coordinates (30px offset per field)
+		// 新しい座標を計算する (フィールドごとに 30px のオフセット)
 		$l_y1+=30
 		$l_y2+=30
 		$i_y1+=30
@@ -140,23 +139,23 @@ Function createDynamicFields
 	End for each 
 	
 	
-	// Manage object pool for dynamic fields
-	// 4D cannot delete dynamically created objects, so we use a pooling pattern:
-	// - Objects are created once and reused across type changes
-	// - If fewer fields are needed than previously created, excess objects are hidden and their data sources are cleared
-	// - nbInputs tracks the maximum number of fields ever created to know how many to hide/show on next call
-	// Example: switching from Company (7 fields) to Person (5 fields) hides Label_6, Label_7, Input_6, Input_7
+	// 動的フィールドのオブジェクトプールを管理する
+	// 4D は動的に作成されたオブジェクトを削除できないため、プーリングパターンを使用する:
+	// - オブジェクトは一度作成されると、種類の変更をまたいで再利用される
+	// - 以前に作成した数より少ないフィールドが必要な場合、余分なオブジェクトは非表示になり、そのデータソースはクリアされる
+	// - nbInputs はこれまでに作成されたフィールドの最大数を追跡し、次回の呼び出し時にいくつ非表示/表示にするかを把握する
+	// 例: Company (7フィールド) から Person (5フィールド) に切り替えると、Label_6、Label_7、Input_6、Input_7 が非表示になる
 	var $i : Integer
 	If ($index<Form:C1466.nbInputs)
-		// Hide fields we no longer need
+		// 不要になったフィールドを非表示にする
 		For ($i; $index+1; Form:C1466.nbInputs)
 			OBJECT SET VISIBLE:C603(*; "Label_"+String:C10($i); False:C215)
 			OBJECT SET VISIBLE:C603(*; "Input_"+String:C10($i); False:C215)
-			// Clear data binding to prevent unintended data updates
+			// 意図しないデータ更新を防ぐためにデータバインディングをクリアする
 			OBJECT SET DATA SOURCE FORMULA:C1851(*; "Input_"+String:C10($i); Null:C1517)
 		End for 
 	Else 
-		// Update max pool size when new fields are created
+		// 新しいフィールドが作成されたときに最大プールサイズを更新する
 		Form:C1466.nbInputs:=$index
 	End if 
 	
