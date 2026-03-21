@@ -12,7 +12,7 @@ Case of
 		
 		LISTBOX SELECT ROWS:C1715(*; "ListBox"; Form:C1466.contacts.slice(0; 1); lk replace selection:K53:1)
 		
-		SearchPicker SET HELP TEXT("SearchPicker"; "Name")
+		SearchPicker SET HELP TEXT("SearchPicker"; "名前")
 		
 		
 	: ($event.code=On Double Clicked:K2:5)

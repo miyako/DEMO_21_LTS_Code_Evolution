@@ -74,7 +74,7 @@
 				},
 				"BtnSave": {
 					"type": "button",
-					"text": "Save",
+					"text": "保存",
 					"top": 295,
 					"left": 160,
 					"width": 120,
@@ -87,7 +87,7 @@
 				},
 				"BtnClose": {
 					"type": "button",
-					"text": "Cancel",
+					"text": "キャンセル",
 					"top": 295,
 					"left": 290,
 					"width": 120,

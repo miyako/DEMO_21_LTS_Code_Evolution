@@ -28,7 +28,7 @@
 		"onTimer",
 		"onBoundVariableChange"
 	],
-	"windowTitle": "Liste des Contacts",
+	"windowTitle": "連絡先リスト",
 	"destination": "detailScreen",
 	"pages": [
 		{
@@ -46,7 +46,8 @@
 					"sizingX": "grow",
 					"bottom": 50,
 					"strokeWidth": 1,
-					"class": "toolbarFill"
+					"class": "toolbarFill",
+					"fill": "automatic"
 				},
 				"ListBox": {
 					"type": "listbox",
@@ -72,6 +73,7 @@
 					"hideFocusRing": true,
 					"headerHeight": "2em",
 					"selectionMode": "single",
+					"alternateFill": "automaticAlternate",
 					"columns": [
 						{
 							"header": {
@@ -85,7 +87,8 @@
 							"dataSource": "This:C1470.Name",
 							"width": 190,
 							"minWidth": 150,
-							"maxWidth": 300
+							"maxWidth": 300,
+							"truncateMode": "none"
 						},
 						{
 							"header": {
@@ -99,7 +102,8 @@
 							"dataSource": "This.Email",
 							"width": 190,
 							"minWidth": 150,
-							"maxWidth": 300
+							"maxWidth": 300,
+							"truncateMode": "none"
 						},
 						{
 							"header": {
@@ -113,7 +117,8 @@
 							"dataSource": "This.Phone",
 							"width": 140,
 							"minWidth": 40,
-							"maxWidth": 300
+							"maxWidth": 300,
+							"truncateMode": "none"
 						},
 						{
 							"header": {
@@ -127,7 +132,8 @@
 							"dataSource": "This.Type",
 							"width": 80,
 							"minWidth": 50,
-							"maxWidth": 300
+							"maxWidth": 300,
+							"truncateMode": "none"
 						},
 						{
 							"header": {
@@ -141,7 +147,8 @@
 							"dataSource": "This.Company",
 							"width": 140,
 							"minWidth": 40,
-							"maxWidth": 300
+							"maxWidth": 300,
+							"truncateMode": "none"
 						}
 					]
 				},
@@ -233,7 +240,7 @@
 			}
 		}
 	],
-	"geometryStamp": 351,
+	"geometryStamp": 353,
 	"method": "method.4dm",
 	"editor": {
 		"activeView": "View 1",
