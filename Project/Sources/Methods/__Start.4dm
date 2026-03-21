@@ -5,9 +5,9 @@ Case of
 		var $ps:=New process:C317(Current method name:C684; 0; Current method name:C684; 0)
 		
 	Else 
-		// Initialize the database with demo data
+		// サンプルデータで初期化
 		_InitializeData
 		
-		// Automatically open main window
+		// メイン画面を表示
 		OpenContactList
 End case 
