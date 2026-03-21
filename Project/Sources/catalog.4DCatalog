@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
-<base name="DEMO_21_LTS_Code_Evolution" uuid="8CB39247C6A74080B8267976FC2B0AE5" collation_locale="en">
+<base name="DEMO_21_LTS_Code_Evolution" uuid="8CB39247C6A74080B8267976FC2B0AE5" collation_locale="ja">
 	<schema name="DEFAULT_SCHEMA"/>
 	<table name="Contacts" uuid="FCBA4ADA84C1429F9D2EFB7158CEE009" id="1">
 		<field name="ID" uuid="1DD990069F3841A790E8D9DBA29414AC" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
@@ -20,6 +20,6 @@
 		</field_ref>
 	</index>
 	<base_extra>
-		<journal_file journal_file_enabled="true"/>
+		<journal_file journal_file_enabled="false"/>
 	</base_extra>
 </base>
