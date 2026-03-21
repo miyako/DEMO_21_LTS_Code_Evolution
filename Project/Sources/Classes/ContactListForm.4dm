@@ -1,7 +1,7 @@
-// Contacts list properties
-property contacts : cs:C1710.ContactsSelection  // All contacts from database, ordered by name
-property selection : cs:C1710.ContactsSelection  // Filtered contacts based on search or criteria
-property selectedContact : cs:C1710.ContactsEntity  // Currently selected contact for editing
+// 連絡先リストのプロパティ
+property contacts : cs:C1710.ContactsSelection  // データベースからのすべての連絡先 (名前順)
+property selection : cs:C1710.ContactsSelection  // 検索または条件に基づいてフィルタリングされた連絡先
+property selectedContact : cs:C1710.ContactsEntity  // 編集のために現在選択されている連絡先
 
 property delaySearch : Integer
 property search : Text
@@ -15,7 +15,7 @@ Class constructor
 	This:C1470.delaySearch:=500
 	This:C1470.search:=""
 	
-	// Load all contacts
+	// すべての連絡先を読み込む
 	This:C1470.loadContacts()
 	
 	
@@ -29,10 +29,10 @@ Function onEditContact
 	
 	If (This:C1470.selectedContact#Null:C1517)
 		
-		// Initialize Detail Form
+		// 詳細フォームを初期化する
 		var $formData:=cs:C1710.ContactDetailForm.new(This:C1470.selectedContact)
 		
-		// Open Detail Form window (edit mode)
+		// 詳細フォームウィンドウを開く (編集モード)
 		var $winRef:=Open form window:C675("ContactDetail"; Movable form dialog box:K39:8; Horizontally centered:K39:1; Vertically centered:K39:4; *)
 		DIALOG:C40("ContactDetail"; $formData)
 		CLOSE WINDOW:C154($winRef)
@@ -41,15 +41,15 @@ Function onEditContact
 	
 Function onNewContact
 	
-	// Initialize Detail Form
+	// 詳細フォームを初期化する
 	var $formData:=cs:C1710.ContactDetailForm.new(Null:C1517)
 	
-	// Open Detail Form window (create mode)
+	// 詳細フォームウィンドウを開く (作成モード)
 	var $winRef:=Open form window:C675("ContactDetail"; Movable form dialog box:K39:8; Horizontally centered:K39:1; Vertically centered:K39:4; *)
 	DIALOG:C40("ContactDetail"; $formData)
 	CLOSE WINDOW:C154($winRef)
 	
-	// Refresh List Form
+	// リストフォームを更新する
 	This:C1470.contacts.add($formData.contact)
 	This:C1470.contacts.refresh()
 	
