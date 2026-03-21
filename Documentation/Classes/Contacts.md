@@ -1,28 +1,28 @@
-# Contacts Class
+# Contacts クラス
 
-## Description
+## 説明
 
-DataClass for the `Contacts` table. This class extends `DataClass` and provides business methods for loading and searching contacts in the database.
+`Contacts` テーブル用の DataClass。このクラスは `DataClass` を継承し、データベース内の連絡先の読み込みと検索のためのビジネスメソッドを提供します。
 
-**Main responsibilities:**
-- Load all contacts
-- Filter contacts by name or company (text search)
+**主な役割:**
+- すべての連絡先を読み込む
+- 名前または会社名で連絡先をフィルタリングする (テキスト検索)
 
-**Pattern used:** ORDA DataClass Extension
+**使用パターン:** ORDA DataClass 拡張 (DataClass Extension)
 
 ---
 
-## Functions
+## 関数
 
-### Function load()
+### 関数 load()
 
-Loads contacts from the database, with the option to filter by text search.
+データベースから連絡先を読み込みます。テキスト検索によるフィルタリングのオプションがあります。
 
 ```4d
 Function load($search : Text) : cs.ContactsSelection
 ```
 
-| Name | Type | Input/Output | Description |
+| 名前 | 型 | 入出力 | 説明 |
 |------|------|:------------:|-------------|
-| `$search` | Text | Input | Search text. If empty (`""`) : returns all contacts. Otherwise : filters contacts whose `Name` or `Company` contains the searched text |
-| Result | cs.ContactsSelection | Output | Entity selection sorted by name |
+| `$search` | Text | 入力 | 検索テキスト。空 (`""`) の場合: すべての連絡先を返します。それ以外の場合: `Name` または `Company` に検索テキストが含まれる連絡先をフィルタリングします |
+| 戻り値 | cs.ContactsSelection | 出力 | 名前でソートされたエンティティセレクション (Entity selection) |

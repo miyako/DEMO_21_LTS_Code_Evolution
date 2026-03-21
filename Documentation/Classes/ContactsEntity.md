@@ -1,40 +1,40 @@
-# ContactsEntity Class
+# ContactsEntity クラス
 
-## Description
+## 説明
 
-Entity class for the `Contacts` table. This class extends `Entity` and encapsulates the business logic for validating and persisting an individual contact.
+`Contacts` テーブル用のエンティティクラス。このクラスは `Entity` を継承し、個々の連絡先の検証および永続化に関するビジネスロジックをカプセル化します。
 
-**Main responsibilities:**
-- Validate contact data before saving
-- Save a contact to the database
-- Delete a contact from the database
+**主な役割:**
+- 保存前に連絡先データを検証する
+- 連絡先をデータベースに保存する
+- 連絡先をデータベースから削除する
 
-**Pattern used:** ORDA Entity Extension
+**使用パターン:** ORDA エンティティ拡張 (Entity Extension)
 
 
-## Functions
+## 関数
 
-### Function saveContact()
+### 関数 saveContact()
 
-Validates and saves the contact to the database.
+連絡先を検証し、データベースに保存します。
 
 ```4d
 Function saveContact : Object
 ```
 
-| Name | Type | Input/Output | Description |
+| 名前 | 型 | 入出力 | 説明 |
 |------|------|:------------:|-------------|
-| Result | Object | Output | Object containing `success` (Boolean) and `statusText` (Text) in case of error |
+| 戻り値 | Object | 出力 | エラーの場合に `success` (Boolean) と `statusText` (Text) を含む Object |
 
 
-### Function removeContact()
+### 関数 removeContact()
 
-Deletes the contact from the database.
+データベースから連絡先を削除します。
 
 ```4d
 Function removeContact : Object
 ```
 
-| Name | Type | Input/Output | Description |
+| 名前 | 型 | 入出力 | 説明 |
 |------|------|:------------:|-------------|
-| Result | Object | Output | Object containing `success` (Boolean) and `statusText` (Text) in case of error |
+| 戻り値 | Object | 出力 | エラーの場合に `success` (Boolean) と `statusText` (Text) を含む Object |

@@ -1,95 +1,95 @@
-# ContactListForm Class
+# ContactListForm クラス
 
-## Description
+## 説明
 
-Form controller for managing the contact list. This class encapsulates the business logic for displaying, filtering, creating, and deleting contacts. It also handles synchronization between the user selection and the database.
+連絡先リストを管理するための Form コントローラー。このクラスは、連絡先の表示、フィルタリング、作成、および削除に関するビジネスロジックをカプセル化します。また、ユーザーの選択とデータベース間の同期も処理します。
 
-**Main responsibilities:**
-- Load all contacts from the database
-- Manage contact selection in the ListBox
-- Create a new contact
-- Edit an existing contact
-- Delete a contact
-- Refresh the list after modifications
+**主な役割:**
+- データベースからすべての連絡先を読み込む
+- ListBox 内の連絡先の選択を管理する
+- 新しい連絡先を作成する
+- 既存の連絡先を編集する
+- 連絡先を削除する
+- 変更後にリストを更新する
 
-**Pattern used:** Form Controller Pattern (MVC)
+**使用パターン:** Form コントローラーパターン (MVC)
 
 ---
 
-## Properties
+## プロパティ
 
-| Property | Type | Description |
+| プロパティ | 型 | 説明 |
 |----------|------|-------------|
-| `contacts` | cs.ContactsSelection | All loaded contacts, sorted by name |
-| `selection` | cs.ContactsSelection | Contacts filtered by search or criteria |
-| `selectedContact` | cs.ContactsEntity | Currently selected contact for editing |
-| `delaySearch` | Integer | Delay in ms before executing the search (debounce) |
-| `search` | Text | Current search text |
+| `contacts` | cs.ContactsSelection | 読み込まれたすべての連絡先 (名前順) |
+| `selection` | cs.ContactsSelection | 検索または条件によってフィルタリングされた連絡先 |
+| `selectedContact` | cs.ContactsEntity | 編集のために現在選択されている連絡先 |
+| `delaySearch` | Integer | 検索実行前の遅延時間 (ミリ秒、デバウンス) |
+| `search` | Text | 現在の検索テキスト |
 
 
-## Functions
+## 関数
 
-### Constructor
+### コンストラクター
 
-Initializes the form controller and loads all contacts.
+Form コントローラーを初期化し、すべての連絡先を読み込みます。
 
 ```4d
 Class constructor()
 ```
 
-| Name | Type | Input/Output | Description |
+| 名前 | 型 | 入出力 | 説明 |
 |------|------|:------------:|-------------|
-| — | — | — | No parameters |
+| — | — | — | パラメーターなし |
 
 
-### Function loadContacts()
+### 関数 loadContacts()
 
-Loads all contacts from the database and displays them in the ListBox.
+データベースからすべての連絡先を読み込み、それらを ListBox に表示します。
 
 ```4d
 Function loadContacts()
 ```
 
-| Name | Type | Input/Output | Description |
+| 名前 | 型 | 入出力 | 説明 |
 |------|------|:------------:|-------------|
-| — | — | — | No parameters, no return value |
+| — | — | — | パラメーターなし、戻り値なし |
 
 
-### Function onEditContact()
+### 関数 onEditContact()
 
-Opens the detail form in edit mode for the selected contact.
+選択された連絡先のために詳細 Form を編集モードで開きます。
 
 ```4d
 Function onEditContact()
 ```
 
-| Name | Type | Input/Output | Description |
+| 名前 | 型 | 入出力 | 説明 |
 |------|------|:------------:|-------------|
-| — | — | — | No parameters, no return value |
+| — | — | — | パラメーターなし、戻り値なし |
 
 
 
-### Function onNewContact()
+### 関数 onNewContact()
 
-Creates a new contact by opening the detail form in creation mode.
+詳細 Form を作成モードで開くことにより、新しい連絡先を作成します。
 
 ```4d
 Function onNewContact()
 ```
 
-| Name | Type | Input/Output | Description |
+| 名前 | 型 | 入出力 | 説明 |
 |------|------|:------------:|-------------|
-| — | — | — | No parameters, no return value |
+| — | — | — | パラメーターなし、戻り値なし |
 
 
-### Function onRemoveContact()
+### 関数 onRemoveContact()
 
-Deletes the selected contact after confirmation.
+確認後、選択された連絡先を削除します。
 
 ```4d
 Function onRemoveContact()
 ```
 
-| Name | Type | Input/Output | Description |
+| 名前 | 型 | 入出力 | 説明 |
 |------|------|:------------:|-------------|
-| — | — | — | No parameters, no return value |
+| — | — | — | パラメーターなし、戻り値なし |

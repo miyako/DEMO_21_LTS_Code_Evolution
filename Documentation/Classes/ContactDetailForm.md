@@ -1,101 +1,101 @@
-# ContactDetailForm Class
+# ContactDetailForm クラス
 
-## Description
+## 説明
 
-Form controller for managing contact details. This class encapsulates the business logic for creating, editing, and displaying a single contact. It also handles dynamic field display based on the contact type (Person or Company).
+連絡先の詳細を管理するための Form コントローラー。このクラスは、単一の連絡先の作成、編集、および表示に関するビジネスロジックをカプセル化します。また、連絡先の種類 (`Person` または `Company`) に基づく動的なフィールド表示も処理します。
 
-**Main responsibilities:**
-- Initialize and load contact data
-- Handle type changes (Person/Company)
-- Dynamically create form fields
-- Save changes to the database
+**主な役割:**
+- 連絡先データを初期化して読み込む
+- 種類の変更 (`Person`/`Company`) を処理する
+- Form のフィールドを動的に作成する
+- 変更をデータベースに保存する
 
-**Pattern used:** Form Controller Pattern (MVC)
+**使用パターン:** Form コントローラーパターン (MVC)
 
 
-## Properties
+## プロパティ
 
-### Business properties (form)
+### ビジネスプロパティ (Form)
 
-| Property | Type | Description |
+| プロパティ | 型 | 説明 |
 |----------|------|-------------|
-| `name` | Text | Contact name or manager name (for a company) |
-| `email` | Text | Contact email address |
-| `phone` | Text | Phone number |
-| `type` | Text | Contact type: `"Person"` or `"Company"` |
-| `company` | Text | Company name |
-| `position` | Text | Job title or role (for a person in a company) |
-| `address` | Text | Full address |
-| `notes` | Text | Additional notes or remarks |
+| `name` | Text | 連絡先の名前、またはマネージャーの名前 (会社の場合) |
+| `email` | Text | 連絡先のメールアドレス |
+| `phone` | Text | 電話番号 |
+| `type` | Text | 連絡先の種類: `"Person"` または `"Company"` |
+| `company` | Text | 会社名 |
+| `position` | Text | 役職または役割 (会社内の個人の場合) |
+| `address` | Text | 完全な住所 |
+| `notes` | Text | 追加のメモまたは備考 |
 
-### Persistence and state properties
+### 永続化と状態のプロパティ
 
-| Property | Type | Description |
+| プロパティ | 型 | 説明 |
 |----------|------|-------------|
-| `contact` | cs.ContactsEntity | Reference to the `Contacts` entity in the database |
-| `isNew` | Boolean | `True` if the contact is being created, `False` otherwise |
+| `contact` | cs.ContactsEntity | データベース内の `Contacts` エンティティへの参照 |
+| `isNew` | Boolean | 連絡先を作成中の場合は `True`、それ以外の場合は `False` |
 
-### Dynamic UI properties
+### 動的 UI プロパティ
 
-| Property | Type | Description |
+| プロパティ | 型 | 説明 |
 |----------|------|-------------|
-| `isCompany` | Boolean | `True` if the type is `Company` |
-| `isPerson` | Boolean | `True` if the type is `Person` |
-| `attributes` | Collection | Ordered list of fields to display dynamically |
-| `nbInputs` | Integer | Maximum number of dynamic fields already created (pool) |
+| `isCompany` | Boolean | 種類が `Company` の場合は `True` |
+| `isPerson` | Boolean | 種類が `Person` の場合は `True` |
+| `attributes` | Collection | 動的に表示するフィールドの順序付きリスト |
+| `nbInputs` | Integer | すでに作成された動的フィールドの最大数 (プール) |
 
 
-## Functions
+## 関数
 
-### Constructor
+### コンストラクター
 
-Initializes the form controller with an existing contact or creates a new contact.
+既存の連絡先を使用して Form コントローラーを初期化するか、新しい連絡先を作成します。
 
 ```4d
 Class constructor($obj : cs.ContactsEntity)
 ```
 
-| Name | Type | Input/Output | Description |
+| 名前 | 型 | 入出力 | 説明 |
 |------|------|:------------:|-------------|
-| `$obj` | cs.ContactsEntity \| Null | Input | Contact entity to edit. If `Null`: creates a new empty contact |
+| `$obj` | cs.ContactsEntity \| Null | 入力 | 編集する連絡先エンティティ。`Null` の場合: 新しい空の連絡先を作成します |
 
 
-### Function save()
+### 関数 save()
 
-Saves the contact to the database. Creates a new entity when in creation mode, updates the existing one when editing.
+連絡先をデータベースに保存します。作成モードのときは新しいエンティティを作成し、編集のときは既存のものを更新します。
 
 ```4d
 Function save()
 ```
 
-| Name | Type | Input/Output | Description |
+| 名前 | 型 | 入出力 | 説明 |
 |------|------|:------------:|-------------|
-| — | — | — | No parameters, no return value |
+| — | — | — | パラメーターなし、戻り値なし |
 
 
-### Function updateType()
+### 関数 updateType()
 
-Updates the contact type and prepares the list of fields to display.
-This collection is then used by `createDynamicFields()` to generate the interface.
+連絡先の種類を更新し、表示するフィールドのリストを準備します。
+この Collection はその後、インターフェースを生成するために `createDynamicFields()` で使用されます。
 
-**Signature:**
+**シグネチャ:**
 ```4d
 Function updateType()
 ```
 
-| Name | Type | Input/Output | Description |
+| 名前 | 型 | 入出力 | 説明 |
 |------|------|:------------:|-------------|
-| — | — | — | No parameters, no return value |
+| — | — | — | パラメーターなし、戻り値なし |
 
 
-### Function createDynamicFields()
+### 関数 createDynamicFields()
 
-Dynamically creates and updates form fields based on the contact type.
+連絡先の種類に基づいて Form フィールドを動的に作成および更新します。
 
 ```4d
 Function createDynamicFields()
 ```
 
-| Name | Type | Input/Output | Description |
+| 名前 | 型 | 入出力 | 説明 |
 |------|------|:------------:|-------------|
-| — | — | — | No parameters, no return value |
+| — | — | — | パラメーターなし、戻り値なし |
