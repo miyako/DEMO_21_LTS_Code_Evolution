@@ -1,5 +1,5 @@
 //%attributes = {"invisible":true}
-// Initialize the database with demo data
+// サンプルデータで初期化
 
 var $contact : Object
 
