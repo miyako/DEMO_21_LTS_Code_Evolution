@@ -1,6 +1,6 @@
 // SearchPicker - On Data Change
-// Restart timer when user types characters in the search field
-// The On Timer event in ContactList/method will launch the actual search after delaySearch milliseconds of inactivity
+// ユーザーが検索フィールドに文字を入力したときにタイマーを再起動します
+// ContactList のメソッド内の On Timer イベントは、非アクティブ状態が delaySearch ミリ秒続いた後に実際の検索を開始します
 
 Case of 
 	: (Form event code:C388=On Data Change:K2:15)
