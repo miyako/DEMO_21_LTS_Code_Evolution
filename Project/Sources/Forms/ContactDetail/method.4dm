@@ -1,26 +1,26 @@
-// Form method for ContactDetail
+// ContactDetailフォームメソッド
 
 Case of 
 	: (Form event code:C388=On Load:K2:1)
 		
 		var $icon : Picture
 		
-		// The form receives the entity via DIALOG or FORM LOAD
-		// Form is already initialized by the calling method
+		// FormはDIALOGまたはFORM LOADを介してエンティティを受け取ります
+		// Formは呼び出し元のメソッドによってすでに初期化されています
 		
 		If (Form:C1466.contact=Null:C1517)
-			// Creation mode
+			// 作成モード
 			BLOB TO PICTURE:C682(File:C1566("/RESOURCES/contact_new.png").getContent(); $icon)
 			SET WINDOW TITLE:C213("New Contact")
 		Else 
-			// Edit mode
+			// 編集モード
 			BLOB TO PICTURE:C682(File:C1566("/RESOURCES/contact_detail.png").getContent(); $icon)
 			SET WINDOW TITLE:C213("Contact Details")
 		End if 
 		
 		SET WINDOW DOCUMENT ICON:C1840(Current form window:C827; $icon)
 		
-		// Call the createDynamicFields method to create fields dynamically based on new type
+		// 新しい種類に基づいてフィールドを動的に作成するために createDynamicFields メソッドを呼び出します
 		Form:C1466.createDynamicFields()
 		
 End case 

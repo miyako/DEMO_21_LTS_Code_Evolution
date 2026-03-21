@@ -1,5 +1,4 @@
 //%attributes = {"invisible":true}
-//%attributes = {"invisible":true}
 // サンプルデータで初期化
 
 var $contact : Object

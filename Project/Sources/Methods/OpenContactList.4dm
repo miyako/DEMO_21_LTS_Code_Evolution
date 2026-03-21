@@ -1,5 +1,4 @@
 //%attributes = {}
-// OpenContactList
 // メイン画面を表示
 
 // ContactListFormクラスのインスタンスでFormデータを管理
