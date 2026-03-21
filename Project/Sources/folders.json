@@ -2,18 +2,11 @@
 	"Data": {
 		"tables": [
 			"Contacts"
-		],
-		"classes": [
-			"Contacts",
-			"ContactsEntity"
 		]
 	},
 	"Detail": {
 		"forms": [
 			"ContactDetail"
-		],
-		"classes": [
-			"ContactDetailForm"
 		]
 	},
 	"List": {
@@ -22,9 +15,6 @@
 		],
 		"forms": [
 			"ContactList"
-		],
-		"classes": [
-			"ContactListForm"
 		]
 	},
 	"trash": {}
