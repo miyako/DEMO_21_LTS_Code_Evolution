@@ -2,7 +2,7 @@ Class extends Entity
 
 Function saveContact : Object
 	
-	// Validation
+	// 検証
 	If (This:C1470.Type="Person") & (This:C1470.Name="")
 		return {success: False:C215; statusText: "The name is mandatory."}
 	End if 
@@ -16,7 +16,7 @@ Function saveContact : Object
 		return {success: False:C215; statusText: "The email is incorrect."}
 	End if 
 	
-	// Save
+	// 保存
 	return This:C1470.save()
 	
 Function removeContact : Object
