@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="2">
+	<com.4d>
+		<compiler>
+			<options target="all"/>
+		</compiler>
+		<database>
+			<cache adaptative="false"/>
+		</database>
+	</com.4d>
+</preferences>
